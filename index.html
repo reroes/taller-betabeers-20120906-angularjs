@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="videos">
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<title>Aplicación de ejemplo en AngularJS</title>
+		<style type="text/css">
+			* {
+				font-family: sans-serif;
+			}
+			.video {
+				width: 350px;
+				display: inline-block;
+				margin: 15px;
+				vertical-align: top;
+			}
+		</style>
+	</head>
+	<body ng-controller="AppCtrl">
+		<input type="text" ng-model="query">
+    <button type="button" ng-click="buscar()">Buscar</button>
+		<h1>Vídeos de Youtube con AngularJS</h1>
+		<div ng-repeat="video in videos" class="video">
+			<h2>'{{video.title}}' por {{video.uploader}}</h2>
+			<div>
+				<iframe width="320" height="240" ng-src="{{videoEmbedURL(video.id)}}" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<h3>Descripción</h3>
+			<div>{{video.description}}</div>
+		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+		<script type="text/javascript" src="application.js"></script>
+	</body>
+</html>
